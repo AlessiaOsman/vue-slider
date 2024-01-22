@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Slider</title>
+
+  <link rel="icon" href="favicon.ico" type="image/ico" />
+
+  <!-- Bootstrap Icon -->
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css'
+    integrity='sha512-D1liES3uvDpPrgk7vXR/hR/sukGn7EtDWEyvpdLsyalQYq6v6YUsTUJmku7B4rcuQ21rf0UTksw2i/2Pdjbd3g=='
+    crossorigin='anonymous' />
+
+
+  <!-- Style -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!--Vue-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- JavaScript -->
+  <script src="js/data.js"></script>
+  <script defer src="js/script.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="root">
+      <div id="carousel">
+        <!-- Prev button -->
+        <i @click="goToPrev" id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
+  
+        <!-- Gallery -->
+        <div class="gallery">
+          <figure v-for="(destination, i) in destinations" v-show="currentIndex === i">
+            <figcaption>
+              <h2>{{destination.name}}</h2>
+              <h3>{{destination.description}}</h3>
+            </figcaption>
+            <img :src="`img/${destination.image}`" :alt="destination.name">
+          </figure>
+        </div>
+  
+        <!-- next button -->
+        <i @click="goToNext" id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
+      </div>
+  
+      <!-- Thumbnails -->
+      <div id="thumbnails">
+        <img @click="currentIndex = i" v-for="(destination, i) in destinations" :src="`img/${destination.image}`" :alt="destination.name" 
+             :class="{active: i === currentIndex}">
+      </div>
+  
+      <!-- <div class="autoplay-controls">
+        <button id="autoplay-button">STOP AUTOPLAY</button>
+      </div> -->
+
+    </div>
+    
+  </div>
+</body>
+
+</html>
