@@ -31,12 +31,21 @@ const app = createApp({
             } else {
                 this.currentIndex = target
             }
+        },
+
+        stopAutoPlay(){
+            clearInterval(this.autoPlay)
+        },
+
+        startAutoPlay(){
+            this.autoPlay = setInterval(()=>{
+                this.setCurrentIndex('next')
+            },2000)
         }
     },
+
     mounted(){
-        setInterval(()=>{
-            this.setCurrentIndex('next')
-        },3000)
+        this.startAutoPlay()
     }
     },
 )
