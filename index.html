@@ -51,7 +51,7 @@
         <i @click="goToNext" id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
       </div>
   
-      <!-- Thumbnails -->
+      <!-- Thumbnails --> 
       <div id="thumbnails">
         <img @click="currentIndex = i" v-for="(destination, i) in destinations" :src="`img/${destination.image}`" :alt="destination.name" 
              :class="{active: i === currentIndex}">
