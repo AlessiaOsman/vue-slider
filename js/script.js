@@ -20,15 +20,20 @@ const app = createApp({
         }
     },
     methods : {
-        goToPrev(){
-            if(!this.isFirstIndex) this.currentIndex--
-            else this.currentIndex = this.destinations.length -1
-        },
-        goToNext(){
-           if(!this.isLastIndex) this.currentIndex++
-           else this.currentIndex = 0
+        
+        setCurrentIndex(target){
+            if(target === 'prev'){
+                if(!this.isFirstIndex) this.currentIndex--
+                else this.currentIndex = this.destinations.length -1
+            } else if (target === 'next'){
+                if(!this.isLastIndex) this.currentIndex++
+                else this.currentIndex = 0
+            } else {
+                this.currentIndex = target
+            }
+        }
         }
     },
-})
+)
 
 app.mount('#root')
